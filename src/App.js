@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
 
 function App() {
   const nayoks =['Ananta', 'Jashim', 'Kanchon']
   const hobbys =['Traveling', 'teaching', 'social work']
   return (
     <div className="App">
+      <Movie></Movie>
             <Nayok name='shakib Khan' hobby='dancing'></Nayok>
             <Nayok name='srk' hobby='boxing'></Nayok>
             <Nayok name='dipjol' hobby='fighting'></Nayok>
@@ -19,6 +21,24 @@ function App() {
       </header>
     </div>
   );
+}
+
+function Movie(props) {
+  const [count, setCount] = useState(0);
+  const handleClick = () => setCount(count+1);
+  return (
+    <div>
+      <h2>Movie Count: {count}</h2>
+      <button onClick={handleClick}>Add Movie</button>
+      <MoviesActed movie={count*100}></MoviesActed>
+    </div>
+  )
+}
+
+function MoviesActed(props) {
+  return <div>
+    Number of Movies Income: {props.movie}
+  </div>
 }
 
 function Nayok(props) {
